@@ -1,0 +1,2 @@
+1. computed
+2. getters in vuex

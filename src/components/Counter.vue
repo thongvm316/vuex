@@ -5,14 +5,18 @@
     <h1 class="counter">{{ counter }}</h1>
     <!-- Can use this syntax after mapState -->
     <!-- get state from main.js -->
-    <button>-</button>
+    <button @click="subtractFromCounter(parseInt(value))">-</button>
     <input type="number" v-model="value" />
-    <button>+</button>
+    <button @click="addToCounter(parseInt(value))">+</button>
+
+    <div>
+      <button @click="addRandomNumber">Add by random number</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Counter',
@@ -24,6 +28,10 @@ export default {
   },
   computed: {
     ...mapState(['counter', 'counter2', 'counter3']),
+  },
+  methods: {
+    ...mapMutations(['addToCounter', 'subtractFromCounter']),
+    ...mapActions(['addRandomNumber']),
   },
 }
 </script>
